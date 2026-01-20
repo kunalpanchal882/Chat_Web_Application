@@ -25,7 +25,7 @@ import Allchats from "./Allchats";
 
 const Chatsidebar = () => {
   const [logedUser, setlogedUser] = useState();
-  const { user, setselectedChat, chats, setchats, selectedChat } = ChatState();
+  const { user, setselectedChat, chats,fetchAgain, setchats, selectedChat } = ChatState();
 
   const fetchChat = async () => {
     try {
@@ -46,7 +46,7 @@ const Chatsidebar = () => {
     }
 
     fetchChat();
-  }, []);
+  }, [fetchAgain]);
 
 //   console.log(chats);
 console.log("seleted chat",selectedChat);
@@ -67,7 +67,7 @@ console.log("seleted chat",selectedChat);
       </CardDescription>
       <CardContent className="p-0">
         <ScrollArea className="h-screen w-full rounded-md border">
-          <Allchats chats={chats} logedUser={logedUser} setselectedChat={setselectedChat}/>
+          <Allchats chats={chats} logedUser={logedUser} setselectedChat={setselectedChat} selectedChat={selectedChat}/>
         </ScrollArea>
       </CardContent>
       {/* <CardFooter className="flex-col gap-2">

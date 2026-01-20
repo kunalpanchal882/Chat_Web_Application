@@ -8,6 +8,7 @@ const ChatProvider = ({children}) => {
     const navigate = useNavigate()
     const [selectedChat, setselectedChat] = useState()
     const [chats, setchats] = useState([])
+    const [fetchAgain, setfetchAgain] = useState(false)
 
     const [user, setUser] = useState(() => {
     const userInfo = localStorage.getItem("userInfo");

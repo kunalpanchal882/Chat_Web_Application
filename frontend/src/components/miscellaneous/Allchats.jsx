@@ -12,7 +12,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { getSender } from "@/config/Chatlogics";
 
-const Allchats = ({ chats, logedUser ,setselectedChat}) => {
+const Allchats = ({ chats, logedUser ,setselectedChat,selectedChat}) => {
   // if (!logedUser) return null
 
   return (
@@ -20,9 +20,9 @@ const Allchats = ({ chats, logedUser ,setselectedChat}) => {
       {chats.map((chat) => (
         <div
         onClick={() => setselectedChat(chat)} 
-         className="flex w-full max-w-lg flex-col gap-6 p-2 cursor-pointer" key={chat._id}>
-          <Item variant="outline">
-            <ItemContent>
+         className={` flex w-full max-w-lg flex-col gap-6 p-2 cursor-pointer`} key={chat._id}>
+          <Item className={`${selectedChat === chat && "bg-green-700"}`} variant="outline">
+            <ItemContent >
               {!chat.isGroupChat ? (
                 <span className="flex gap-2">
                   <Avatar>
