@@ -12,20 +12,16 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { getSender } from "@/config/Chatlogics";
 
-const Allchats = ({ chats, logedUser }) => {
+const Allchats = ({ chats, logedUser ,setselectedChat}) => {
   // if (!logedUser) return null
-
-  console.log(logedUser);
-  console.log(chats);
 
   return (
     <>
       {chats.map((chat) => (
-        <div className="flex w-full max-w-lg flex-col gap-6 p-2" key={chat._id}>
+        <div
+        onClick={() => setselectedChat(chat)} 
+         className="flex w-full max-w-lg flex-col gap-6 p-2 cursor-pointer" key={chat._id}>
           <Item variant="outline">
-            {/* <ItemMedia variant="icon">
-          <ShieldAlertIcon />
-        </ItemMedia> */}
             <ItemContent>
               {!chat.isGroupChat ? (
                 <span className="flex gap-2">
@@ -40,10 +36,6 @@ const Allchats = ({ chats, logedUser }) => {
                   <ItemTitle>{chat.chatName}</ItemTitle>
                 </span>
               )}
-
-              {/* <ItemDescription>
-            New login detected from unknown device.
-          </ItemDescription>  */}
             </ItemContent>
           </Item>
         </div>

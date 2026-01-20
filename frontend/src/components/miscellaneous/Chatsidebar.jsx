@@ -25,7 +25,7 @@ import Allchats from "./Allchats";
 
 const Chatsidebar = () => {
   const [logedUser, setlogedUser] = useState();
-  const { user, setselectedChat, chats, setchats, selectedchat } = ChatState();
+  const { user, setselectedChat, chats, setchats, selectedChat } = ChatState();
 
   const fetchChat = async () => {
     try {
@@ -49,9 +49,11 @@ const Chatsidebar = () => {
   }, []);
 
 //   console.log(chats);
+console.log("seleted chat",selectedChat);
+
 
   return (
-    <Card className="w-full max-w-sm">
+    <Card className={` ${selectedChat ? "hidden" : "flex"} md:flex w-full max-w-sm`}>
       <CardHeader>
         <div className="w-full flex justify-between items-center mb-0">
           <CardTitle>Chats</CardTitle>
@@ -65,7 +67,7 @@ const Chatsidebar = () => {
       </CardDescription>
       <CardContent className="p-0">
         <ScrollArea className="h-screen w-full rounded-md border">
-          <Allchats chats={chats} logedUser={logedUser} />
+          <Allchats chats={chats} logedUser={logedUser} setselectedChat={setselectedChat}/>
         </ScrollArea>
       </CardContent>
       {/* <CardFooter className="flex-col gap-2">

@@ -4,7 +4,7 @@ import Chatsidebar from './Chatsidebar'
 
 const Chatui = () => {
   return (
-    <div className='flex gap-3'>
+    <div className='flex gap-3 w-full'>
         <Chatsidebar/>
         <Message/>
     </div>
