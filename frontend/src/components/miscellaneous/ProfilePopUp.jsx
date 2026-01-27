@@ -13,9 +13,9 @@ import { ChatState } from "@/context/ChatProvider";
 import { Avatar, AvatarImage } from "@radix-ui/react-avatar";
 import { Input } from "@/components/ui/input"
 
-const ProfilePopUp = () => {
+const ProfilePopUp = ({user}) => {
 
-   const {user} = ChatState()
+  //  const {user} = ChatState()
 
   return (
     <Dialog >

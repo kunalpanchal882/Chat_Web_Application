@@ -5,6 +5,9 @@ import { ChatState } from "@/context/ChatProvider";
 import { ArrowLeft, CircleEllipsis, MessageSquareLock } from "lucide-react";
 import { Button } from "./ui/button";
 import { Skeleton } from "./ui/skeleton";
+import ProfileModel from "./miscellaneous/ProfileModel";
+import { Card } from "./ui/card";
+import UpdateGroupChatModel from "./miscellaneous/UpdateGroupChatModel";
 
 const SingleChat = () => {
   const { selectedChat, setselectedChat, user, fetchAgain, setfetchAgain } =
@@ -16,7 +19,7 @@ const SingleChat = () => {
       {selectedChat ? (
         <>
           <header className="mx-3 flex gap-5 justify-between items-center">
-            <Button onClick={() => setselectedChat("")}>
+            <Button className="cursor-pointer" onClick={() => setselectedChat("")}>
               <ArrowLeft />
             </Button>
             {selectedChat.isGroupChat ? (
@@ -28,6 +31,7 @@ const SingleChat = () => {
                   </Avatar>
                   <h2>{selectedChat.chatName}</h2>
                 </div>
+                <UpdateGroupChatModel />
               </div>
             ) : (
               <div className="flex gap-2 items-center justify-between w-full">
@@ -38,11 +42,18 @@ const SingleChat = () => {
                   </Avatar>
                   <h2>{getSender(user,selectedChat.users).name}</h2>
                 </div>
+                <ProfileModel user={getSender(user,selectedChat.users)}/>
               </div>
             )}
-            <CircleEllipsis />
+            {/* <CircleEllipsis /> */}
           </header>
-          <Separator />
+          {/* <Separator /> */}
+            {/* <Card className="bg-red-500">
+              das
+            </Card> */}
+            <div className=" h-full">
+              dadsd
+            </div>
         </>
       ) : (
         <div className="flex flex-col h-full items-center justify-center">

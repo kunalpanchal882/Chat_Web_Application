@@ -9,6 +9,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  useSidebar,
 } from "@/components/ui/sidebar";
 
 import { useState } from "react";
@@ -28,6 +29,8 @@ export function AppSidebar() {
   const [loadingChat, setloadingChat] = useState();
 
  const {user,setselectedChat,chats, setchats} = ChatState()
+
+const {setOpen} = useSidebar()
  
 
   const handelSearch = async () => {
@@ -55,12 +58,12 @@ export function AppSidebar() {
   const accessChat = async(userId) => {
     try {
       setloadingChat(true)
-
       const {data} = await axiosInstance.post('/chat/',{userId})
       console.log("acces chat",data);
       if(!chats.find((c) => c._id === data._id))setchats([data,...chats])
       setselectedChat(data)
       setloadingChat(false)
+      setOpen(false)
     } catch (error) {
         console.log(error);
         toast.error("error occure in acces this user chat")

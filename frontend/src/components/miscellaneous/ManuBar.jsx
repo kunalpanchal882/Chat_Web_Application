@@ -53,7 +53,7 @@ const ManuBar = () => {
           <DropdownMenuContent>
             <DropdownMenuLabel>My Account</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <ProfilePopUp /> 
+            <ProfilePopUp user={user}/> 
             <DropdownMenuItem onClick={handelLogout}>Logout</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
